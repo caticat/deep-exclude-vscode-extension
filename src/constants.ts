@@ -13,27 +13,20 @@ export const TARGET_CONFIGS = {
   watcher: 'files.watcherExclude',
 } as const;
 
-/** Built-in default preset. All active (true) by default. */
+/** Built-in default preset — language-agnostic entries only. All active (true) by default. */
 export const DEFAULT_PRESET: Record<string, boolean> = {
-  'node_modules/': true,
+  // VCS
   '.git/': true,
   '.svn/': true,
   '.hg/': true,
   'CVS/': true,
-  'dist/': true,
-  'build/': true,
-  'out/': true,
-  '.next/': true,
-  '.cache/': true,
-  '__pycache__/': true,
-  '.venv/': true,
-  '.tox/': true,
-  '*.log': true,
+  // OS artifacts
   '.DS_Store': true,
   'Thumbs.db': true,
   'desktop.ini': true,
-  '.idea/': true,
-  '.vs/': true,
+  // Editor temp files
   '*.swp': true,
   '*.tmp': true,
+  // Log files
+  '*.log': true,
 };

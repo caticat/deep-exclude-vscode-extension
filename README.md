@@ -43,7 +43,7 @@ Open the **Excluded Items** panel in the Explorer sidebar:
 
 ### Default preset
 
-`node_modules/`, `.git/`, `.svn/`, `.hg/`, `CVS/`, `dist/`, `build/`, `out/`, `.next/`, `.cache/`, `__pycache__/`, `.venv/`, `.tox/`, `*.log`, `.DS_Store`, `Thumbs.db`, `desktop.ini`, `.idea/`, `.vs/`, `*.swp`, `*.tmp`
+Language-agnostic entries only: `.git/`, `.svn/`, `.hg/`, `CVS/`, `.DS_Store`, `Thumbs.db`, `desktop.ini`, `*.swp`, `*.tmp`, `*.log`
 
 ## Known Limitations
 
