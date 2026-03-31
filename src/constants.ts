@@ -1,4 +1,4 @@
-export const EXT_ID = 'excludeAllInOne';
+export const EXT_ID = 'deepExclude';
 
 export const CONFIG_KEYS = {
   excludeList: `${EXT_ID}.excludeList`,

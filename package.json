@@ -1,6 +1,6 @@
 {
-  "name": "exclude-all-in-one",
-  "displayName": "Exclude All In One",
+  "name": "deep-exclude",
+  "displayName": "Deep Exclude",
   "description": "Unified file/folder exclusion management — sync glob patterns to Explorer, search, and file watcher simultaneously.",
   "version": "0.1.0",
   "publisher": "panjie039",
@@ -19,132 +19,132 @@
   "contributes": {
     "commands": [
       {
-        "command": "excludeAllInOne.exclude",
-        "title": "Exclude (All In One)",
-        "category": "Exclude All In One"
+        "command": "deepExclude.exclude",
+        "title": "Exclude (Deep Exclude)",
+        "category": "Deep Exclude"
       },
       {
-        "command": "excludeAllInOne.addPattern",
+        "command": "deepExclude.addPattern",
         "title": "Add Pattern",
-        "category": "Exclude All In One",
+        "category": "Deep Exclude",
         "icon": "$(add)"
       },
       {
-        "command": "excludeAllInOne.toggle",
+        "command": "deepExclude.toggle",
         "title": "Toggle Rule",
-        "category": "Exclude All In One",
+        "category": "Deep Exclude",
         "icon": "$(eye)"
       },
       {
-        "command": "excludeAllInOne.remove",
+        "command": "deepExclude.remove",
         "title": "Remove Rule",
-        "category": "Exclude All In One",
+        "category": "Deep Exclude",
         "icon": "$(trash)"
       },
       {
-        "command": "excludeAllInOne.toggleAllOn",
+        "command": "deepExclude.toggleAllOn",
         "title": "Enable All Rules",
-        "category": "Exclude All In One",
+        "category": "Deep Exclude",
         "icon": "$(check-all)"
       },
       {
-        "command": "excludeAllInOne.toggleAllOff",
+        "command": "deepExclude.toggleAllOff",
         "title": "Disable All Rules",
-        "category": "Exclude All In One",
+        "category": "Deep Exclude",
         "icon": "$(close-all)"
       },
       {
-        "command": "excludeAllInOne.restoreDefaults",
+        "command": "deepExclude.restoreDefaults",
         "title": "Restore Defaults",
-        "category": "Exclude All In One",
+        "category": "Deep Exclude",
         "icon": "$(discard)"
       },
       {
-        "command": "excludeAllInOne.openSettings",
+        "command": "deepExclude.openSettings",
         "title": "Open Settings",
-        "category": "Exclude All In One",
+        "category": "Deep Exclude",
         "icon": "$(settings-gear)"
       }
     ],
     "views": {
       "explorer": [
         {
-          "id": "excludeAllInOne.pane",
+          "id": "deepExclude.pane",
           "name": "Excluded Items",
           "icon": "$(eye-closed)",
-          "contextualTitle": "Exclude All In One"
+          "contextualTitle": "Deep Exclude"
         }
       ]
     },
     "menus": {
       "explorer/context": [
         {
-          "command": "excludeAllInOne.exclude",
+          "command": "deepExclude.exclude",
           "group": "7_modification@1"
         }
       ],
       "view/title": [
         {
-          "command": "excludeAllInOne.addPattern",
-          "when": "view == excludeAllInOne.pane",
+          "command": "deepExclude.addPattern",
+          "when": "view == deepExclude.pane",
           "group": "navigation@1"
         },
         {
-          "command": "excludeAllInOne.toggleAllOn",
-          "when": "view == excludeAllInOne.pane",
+          "command": "deepExclude.toggleAllOn",
+          "when": "view == deepExclude.pane",
           "group": "navigation@2"
         },
         {
-          "command": "excludeAllInOne.toggleAllOff",
-          "when": "view == excludeAllInOne.pane",
+          "command": "deepExclude.toggleAllOff",
+          "when": "view == deepExclude.pane",
           "group": "navigation@3"
         },
         {
-          "command": "excludeAllInOne.restoreDefaults",
-          "when": "view == excludeAllInOne.pane",
+          "command": "deepExclude.restoreDefaults",
+          "when": "view == deepExclude.pane",
           "group": "navigation@4"
         },
         {
-          "command": "excludeAllInOne.openSettings",
-          "when": "view == excludeAllInOne.pane",
+          "command": "deepExclude.openSettings",
+          "when": "view == deepExclude.pane",
           "group": "navigation@5"
         }
       ],
       "view/item/context": [
         {
-          "command": "excludeAllInOne.toggle",
-          "when": "view == excludeAllInOne.pane",
+          "command": "deepExclude.toggle",
+          "when": "view == deepExclude.pane",
           "group": "inline@1"
         },
         {
-          "command": "excludeAllInOne.remove",
-          "when": "view == excludeAllInOne.pane",
+          "command": "deepExclude.remove",
+          "when": "view == deepExclude.pane",
           "group": "inline@2"
         }
       ]
     },
     "configuration": {
-      "title": "Exclude All In One",
+      "title": "Deep Exclude",
       "properties": {
-        "excludeAllInOne.excludeList": {
+        "deepExclude.excludeList": {
           "type": "object",
           "default": {},
-          "description": "Glob patterns managed by Exclude All In One. true = active, false = disabled.",
+          "description": "Glob patterns managed by Deep Exclude. true = active, false = disabled.",
           "scope": "resource"
         },
-        "excludeAllInOne.syncToFilesExclude": {
+        "deepExclude.syncToFilesExclude": {
           "type": "boolean",
           "default": true,
           "description": "Sync exclusion list to files.exclude (affects Explorer, Quick Open, Symbol Search).",
           "scope": "resource"
         },
-        "excludeAllInOne.syncToSearchExclude": {
+        "deepExclude.syncToSearchExclude": {
           "type": "boolean",
           "default": true,
           "description": "Sync exclusion list to search.exclude (affects full-text search Ctrl+Shift+F).",
           "scope": "resource"
         },
-        "excludeAllInOne.syncToWatcherExclude": {
+        "deepExclude.syncToWatcherExclude": {
           "type": "boolean",
           "default": true,
           "description": "Sync exclusion list to files.watcherExclude (file system watcher, performance optimization).",

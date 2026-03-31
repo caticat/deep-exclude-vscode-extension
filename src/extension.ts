@@ -15,7 +15,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
   // Register TreeView
   const viewPane = new ExcludeViewPane();
-  const treeView = vscode.window.createTreeView('excludeAllInOne.pane', {
+  const treeView = vscode.window.createTreeView('deepExclude.pane', {
     treeDataProvider: viewPane,
     showCollapseAll: false,
   });
@@ -30,7 +30,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   // Command: exclude from Explorer context menu (right-click on file/folder)
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      'excludeAllInOne.exclude',
+      'deepExclude.exclude',
       async (uri: vscode.Uri) => {
         if (!uri) return;
         const workspaceFolder = vscode.workspace.getWorkspaceFolder(uri);
@@ -42,7 +42,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
         const suggestion = isDir ? `${relative}/` : relative;
 
         const input = await vscode.window.showInputBox({
-          title: 'Exclude All In One: Add Pattern',
+          title: 'Deep Exclude: Add Pattern',
           prompt: 'Edit the glob pattern to exclude',
           value: suggestion,
           validateInput: (v) => (v.trim() ? null : 'Pattern cannot be empty'),
@@ -55,9 +55,9 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
   // Command: add pattern manually
   context.subscriptions.push(
-    vscode.commands.registerCommand('excludeAllInOne.addPattern', async () => {
+    vscode.commands.registerCommand('deepExclude.addPattern', async () => {
       const input = await vscode.window.showInputBox({
-        title: 'Exclude All In One: Add Pattern',
+        title: 'Deep Exclude: Add Pattern',
         prompt: 'Enter a glob pattern to exclude (e.g. dist/, *.log)',
         validateInput: (v) => (v.trim() ? null : 'Pattern cannot be empty'),
       });
@@ -69,7 +69,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   // Command: toggle a rule (called from inline button in tree)
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      'excludeAllInOne.toggle',
+      'deepExclude.toggle',
       async (item: ExcludeItem) => {
         if (!item?.pattern) return;
         await runAndRefresh(() => excludeManager.toggleRule(item.pattern));
@@ -80,7 +80,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   // Command: remove a rule
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      'excludeAllInOne.remove',
+      'deepExclude.remove',
       async (item: ExcludeItem) => {
         if (!item?.pattern) return;
         await runAndRefresh(() => excludeManager.removeRule(item.pattern));
@@ -90,14 +90,14 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
   // Command: enable all
   context.subscriptions.push(
-    vscode.commands.registerCommand('excludeAllInOne.toggleAllOn', async () => {
+    vscode.commands.registerCommand('deepExclude.toggleAllOn', async () => {
       await runAndRefresh(() => excludeManager.enableAll());
     })
   );
 
   // Command: disable all
   context.subscriptions.push(
-    vscode.commands.registerCommand('excludeAllInOne.toggleAllOff', async () => {
+    vscode.commands.registerCommand('deepExclude.toggleAllOff', async () => {
       await runAndRefresh(() => excludeManager.disableAll());
     })
   );
@@ -105,7 +105,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   // Command: restore defaults
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      'excludeAllInOne.restoreDefaults',
+      'deepExclude.restoreDefaults',
       async () => {
         await presetManager.restoreDefaults();
         viewPane.refresh();
@@ -115,10 +115,10 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
   // Command: open settings
   context.subscriptions.push(
-    vscode.commands.registerCommand('excludeAllInOne.openSettings', () => {
+    vscode.commands.registerCommand('deepExclude.openSettings', () => {
       vscode.commands.executeCommand(
         'workbench.action.openSettings',
-        'excludeAllInOne'
+        'deepExclude'
       );
     })
   );

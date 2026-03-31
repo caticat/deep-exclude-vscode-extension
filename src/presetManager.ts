@@ -10,7 +10,7 @@ export async function applyDefaultsIfEmpty(): Promise<void> {
   const cfg = vscode.workspace.getConfiguration();
   // inspect() returns undefined for workspaceValue when the key has never been written to
   // .vscode/settings.json — this distinguishes "never set" from "user set to {}"
-  const info = cfg.inspect<Record<string, boolean>>('excludeAllInOne.excludeList');
+  const info = cfg.inspect<Record<string, boolean>>('deepExclude.excludeList');
   if (info?.workspaceValue === undefined) {
     await setExcludeList({ ...DEFAULT_PRESET });
   }
@@ -30,5 +30,5 @@ export async function restoreDefaults(): Promise<void> {
     return;
   }
   await setExcludeList({ ...DEFAULT_PRESET });
-  vscode.window.showInformationMessage('Exclude All In One: Defaults restored.');
+  vscode.window.showInformationMessage('Deep Exclude: Defaults restored.');
 }

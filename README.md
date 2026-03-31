@@ -1,4 +1,4 @@
-# Exclude All In One
+# Deep Exclude
 
 > **Why this extension?** Tools like [explorer-exclude](https://github.com/sfccdevops/explorer-exclude-vscode-extension) only hide files from the Explorer. If you exclude `dist/` but it still shows up in full-text search results (Ctrl+Shift+F), that's the gap this extension fills. One exclusion list, synced everywhere.
 
@@ -20,8 +20,8 @@ Unified file/folder exclusion management for VS Code. Maintain a single list of 
 
 ### Add an exclusion rule
 
-- Right-click a file or folder in Explorer → **Exclude (All In One)**
-- Or: Command Palette → **Exclude All In One: Add Pattern**
+- Right-click a file or folder in Explorer → **Exclude (Deep Exclude)**
+- Or: Command Palette → **Deep Exclude: Add Pattern**
 
 ### Manage rules
 
@@ -40,9 +40,9 @@ Open the **Excluded Items** panel in the Explorer sidebar:
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `excludeAllInOne.syncToFilesExclude` | `true` | Sync to `files.exclude` (Explorer, Quick Open, Symbol Search) |
-| `excludeAllInOne.syncToSearchExclude` | `true` | Sync to `search.exclude` (full-text search) |
-| `excludeAllInOne.syncToWatcherExclude` | `true` | Sync to `files.watcherExclude` (performance) |
+| `deepExclude.syncToFilesExclude` | `true` | Sync to `files.exclude` (Explorer, Quick Open, Symbol Search) |
+| `deepExclude.syncToSearchExclude` | `true` | Sync to `search.exclude` (full-text search) |
+| `deepExclude.syncToWatcherExclude` | `true` | Sync to `files.watcherExclude` (performance) |
 
 ### Default preset
 
@@ -58,7 +58,7 @@ Inspired by [explorer-exclude-vscode-extension](https://github.com/sfccdevops/ex
 
 ---
 
-# Exclude All In One（中文说明）
+# Deep Exclude（中文说明）
 
 > **为什么要用这个插件？** [explorer-exclude](https://github.com/sfccdevops/explorer-exclude-vscode-extension) 等工具只能隐藏 Explorer 中的文件。如果你排除了 `dist/`，但它仍然出现在全文搜索结果（Ctrl+Shift+F）中，这正是本插件解决的问题。一份排除列表，同步到所有地方。
 
@@ -80,8 +80,8 @@ Inspired by [explorer-exclude-vscode-extension](https://github.com/sfccdevops/ex
 
 ### 添加排除规则
 
-- 在 Explorer 中右键点击文件或文件夹 → **Exclude (All In One)**
-- 或：命令面板 → **Exclude All In One: Add Pattern**
+- 在 Explorer 中右键点击文件或文件夹 → **Exclude (Deep Exclude)**
+- 或：命令面板 → **Deep Exclude: Add Pattern**
 
 ### 管理规则
 
@@ -100,9 +100,9 @@ Inspired by [explorer-exclude-vscode-extension](https://github.com/sfccdevops/ex
 
 | 设置 | 默认值 | 说明 |
 |------|--------|------|
-| `excludeAllInOne.syncToFilesExclude` | `true` | 同步到 `files.exclude`（影响 Explorer、快速打开、符号搜索） |
-| `excludeAllInOne.syncToSearchExclude` | `true` | 同步到 `search.exclude`（影响全文搜索） |
-| `excludeAllInOne.syncToWatcherExclude` | `true` | 同步到 `files.watcherExclude`（文件监听器性能优化） |
+| `deepExclude.syncToFilesExclude` | `true` | 同步到 `files.exclude`（影响 Explorer、快速打开、符号搜索） |
+| `deepExclude.syncToSearchExclude` | `true` | 同步到 `search.exclude`（影响全文搜索） |
+| `deepExclude.syncToWatcherExclude` | `true` | 同步到 `files.watcherExclude`（文件监听器性能优化） |
 
 ### 内置预设
 
