@@ -8,9 +8,10 @@ import { setExcludeList } from './excludeManager';
  */
 export async function applyDefaultsIfEmpty(): Promise<void> {
   const cfg = vscode.workspace.getConfiguration();
-  const existing = cfg.get<Record<string, boolean>>('excludeAllInOne.excludeList');
-  // undefined means never set; {} means user cleared it intentionally — don't overwrite
-  if (existing === undefined) {
+  // inspect() returns undefined for workspaceValue when the key has never been written to
+  // .vscode/settings.json — this distinguishes "never set" from "user set to {}"
+  const info = cfg.inspect<Record<string, boolean>>('excludeAllInOne.excludeList');
+  if (info?.workspaceValue === undefined) {
     await setExcludeList({ ...DEFAULT_PRESET });
   }
 }
