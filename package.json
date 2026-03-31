@@ -1,0 +1,170 @@
+{
+  "name": "exclude-all-in-one",
+  "displayName": "Exclude All In One",
+  "description": "Unified file/folder exclusion management — sync glob patterns to Explorer, search, and file watcher simultaneously.",
+  "version": "0.1.0",
+  "publisher": "panjie039",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": ["Other"],
+  "keywords": ["exclude", "explorer", "search", "filter", "hidden"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "excludeAllInOne.exclude",
+        "title": "Exclude (All In One)",
+        "category": "Exclude All In One"
+      },
+      {
+        "command": "excludeAllInOne.addPattern",
+        "title": "Add Pattern",
+        "category": "Exclude All In One",
+        "icon": "$(add)"
+      },
+      {
+        "command": "excludeAllInOne.toggle",
+        "title": "Toggle Rule",
+        "category": "Exclude All In One",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "excludeAllInOne.remove",
+        "title": "Remove Rule",
+        "category": "Exclude All In One",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "excludeAllInOne.toggleAllOn",
+        "title": "Enable All Rules",
+        "category": "Exclude All In One",
+        "icon": "$(check-all)"
+      },
+      {
+        "command": "excludeAllInOne.toggleAllOff",
+        "title": "Disable All Rules",
+        "category": "Exclude All In One",
+        "icon": "$(close-all)"
+      },
+      {
+        "command": "excludeAllInOne.restoreDefaults",
+        "title": "Restore Defaults",
+        "category": "Exclude All In One",
+        "icon": "$(discard)"
+      },
+      {
+        "command": "excludeAllInOne.openSettings",
+        "title": "Open Settings",
+        "category": "Exclude All In One",
+        "icon": "$(settings-gear)"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "excludeAllInOne.pane",
+          "name": "Excluded Items",
+          "icon": "$(eye-closed)",
+          "contextualTitle": "Exclude All In One"
+        }
+      ]
+    },
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "excludeAllInOne.exclude",
+          "group": "7_modification@1"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "excludeAllInOne.addPattern",
+          "when": "view == excludeAllInOne.pane",
+          "group": "navigation@1"
+        },
+        {
+          "command": "excludeAllInOne.toggleAllOn",
+          "when": "view == excludeAllInOne.pane",
+          "group": "navigation@2"
+        },
+        {
+          "command": "excludeAllInOne.toggleAllOff",
+          "when": "view == excludeAllInOne.pane",
+          "group": "navigation@3"
+        },
+        {
+          "command": "excludeAllInOne.restoreDefaults",
+          "when": "view == excludeAllInOne.pane",
+          "group": "navigation@4"
+        },
+        {
+          "command": "excludeAllInOne.openSettings",
+          "when": "view == excludeAllInOne.pane",
+          "group": "navigation@5"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "excludeAllInOne.toggle",
+          "when": "view == excludeAllInOne.pane",
+          "group": "inline@1"
+        },
+        {
+          "command": "excludeAllInOne.remove",
+          "when": "view == excludeAllInOne.pane",
+          "group": "inline@2"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Exclude All In One",
+      "properties": {
+        "excludeAllInOne.excludeList": {
+          "type": "object",
+          "default": {},
+          "description": "Glob patterns managed by Exclude All In One. true = active, false = disabled.",
+          "scope": "resource"
+        },
+        "excludeAllInOne.syncToFilesExclude": {
+          "type": "boolean",
+          "default": true,
+          "description": "Sync exclusion list to files.exclude (affects Explorer, Quick Open, Symbol Search).",
+          "scope": "resource"
+        },
+        "excludeAllInOne.syncToSearchExclude": {
+          "type": "boolean",
+          "default": true,
+          "description": "Sync exclusion list to search.exclude (affects full-text search Ctrl+Shift+F).",
+          "scope": "resource"
+        },
+        "excludeAllInOne.syncToWatcherExclude": {
+          "type": "boolean",
+          "default": true,
+          "description": "Sync exclusion list to files.watcherExclude (file system watcher, performance optimization).",
+          "scope": "resource"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "vscode:prepublish": "node esbuild.js --production",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.75.0",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.24.0"
+  }
+}
