@@ -45,6 +45,10 @@ Open the **Excluded Items** panel in the Explorer sidebar:
 
 `node_modules/`, `.git/`, `.svn/`, `.hg/`, `CVS/`, `dist/`, `build/`, `out/`, `.next/`, `.cache/`, `__pycache__/`, `.venv/`, `.tox/`, `*.log`, `.DS_Store`, `Thumbs.db`, `desktop.ini`, `.idea/`, `.vs/`, `*.swp`, `*.tmp`
 
+## Known Limitations
+
+**"Go to Symbol in Workspace" (Ctrl+T)** results are controlled by language servers (e.g. tsserver for TypeScript), which maintain their own file index independently of `files.exclude`. Excluded files may still appear in symbol search results. This is a VSCode architectural limitation that cannot be addressed by extensions.
+
 ## Attribution
 
 Inspired by [explorer-exclude-vscode-extension](https://github.com/sfccdevops/explorer-exclude-vscode-extension) by sfccdevops (MIT). No code reused.
@@ -97,6 +101,10 @@ Inspired by [explorer-exclude-vscode-extension](https://github.com/sfccdevops/ex
 ### 内置预设
 
 `node_modules/`、`.git/`、`.svn/`、`.hg/`、`CVS/`、`dist/`、`build/`、`out/`、`.next/`、`.cache/`、`__pycache__/`、`.venv/`、`.tox/`、`*.log`、`.DS_Store`、`Thumbs.db`、`desktop.ini`、`.idea/`、`.vs/`、`*.swp`、`*.tmp`
+
+## 已知限制
+
+**"Go to Symbol in Workspace"（Ctrl+T）符号搜索**的结果由语言服务器（如 TypeScript 的 tsserver）控制，语言服务器维护独立的文件索引，不受 `files.exclude` 影响。被排除的文件仍可能出现在符号搜索结果中。这是 VSCode 架构层面的限制，插件无法解决。
 
 ## 致谢
 
