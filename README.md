@@ -1,9 +1,12 @@
 # Exclude All In One
 
+> **Why this extension?** Tools like [explorer-exclude](https://github.com/sfccdevops/explorer-exclude-vscode-extension) only hide files from the Explorer. If you exclude `dist/` but it still shows up in full-text search results (Ctrl+Shift+F), that's the gap this extension fills. One exclusion list, synced everywhere.
+
 Unified file/folder exclusion management for VS Code. Maintain a single list of glob patterns and sync them to Explorer, full-text search, and the file watcher — all at once, with independent toggles per target.
 
 ## Features
 
+- **Syncs to full-text search** — excluded files won't appear in Ctrl+Shift+F results (unlike explorer-exclude)
 - **Single exclusion list** — one place to manage all your exclusion rules
 - **Sync to multiple targets** — writes to `files.exclude`, `search.exclude`, and `files.watcherExclude` simultaneously
 - **Independent toggles** — enable/disable each sync target independently in settings
@@ -57,10 +60,13 @@ Inspired by [explorer-exclude-vscode-extension](https://github.com/sfccdevops/ex
 
 # Exclude All In One（中文说明）
 
+> **为什么要用这个插件？** [explorer-exclude](https://github.com/sfccdevops/explorer-exclude-vscode-extension) 等工具只能隐藏 Explorer 中的文件。如果你排除了 `dist/`，但它仍然出现在全文搜索结果（Ctrl+Shift+F）中，这正是本插件解决的问题。一份排除列表，同步到所有地方。
+
 统一管理 VS Code 文件/文件夹排除规则的插件。维护一份 glob 模式列表，同时同步到 Explorer、全文搜索和文件监听器，每个同步目标均可独立开关。
 
 ## 功能特性
 
+- **同步到全文搜索** — 被排除的文件不会出现在 Ctrl+Shift+F 搜索结果中（explorer-exclude 做不到这点）
 - **统一排除列表** — 所有排除规则在一处管理
 - **多目标同步** — 同时写入 `files.exclude`、`search.exclude`、`files.watcherExclude`
 - **独立开关** — 每个同步目标可在设置中单独启用/禁用
@@ -100,7 +106,7 @@ Inspired by [explorer-exclude-vscode-extension](https://github.com/sfccdevops/ex
 
 ### 内置预设
 
-`node_modules/`、`.git/`、`.svn/`、`.hg/`、`CVS/`、`dist/`、`build/`、`out/`、`.next/`、`.cache/`、`__pycache__/`、`.venv/`、`.tox/`、`*.log`、`.DS_Store`、`Thumbs.db`、`desktop.ini`、`.idea/`、`.vs/`、`*.swp`、`*.tmp`
+仅包含与语言无关的通用规则：`.git/`、`.svn/`、`.hg/`、`CVS/`、`.DS_Store`、`Thumbs.db`、`desktop.ini`、`*.swp`、`*.tmp`、`*.log`
 
 ## 已知限制
 
