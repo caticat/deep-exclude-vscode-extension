@@ -52,6 +52,20 @@ Language-agnostic entries only: `.git/`, `.svn/`, `.hg/`, `CVS/`, `.DS_Store`, `
 
 **"Go to Symbol in Workspace" (Ctrl+T)** results are controlled by language servers (e.g. tsserver for TypeScript), which maintain their own file index independently of `files.exclude`. Excluded files may still appear in symbol search results. This is a VSCode architectural limitation that cannot be addressed by extensions.
 
+## Tips: Respecting .gitignore
+
+This extension manages explicit glob patterns. If you also want VSCode to respect your `.gitignore` file, enable these built-in VSCode settings:
+
+```jsonc
+// Hide .gitignore'd files from Explorer
+"explorer.excludeGitIgnore": true,
+
+// Exclude .gitignore'd files from full-text search
+"search.useIgnoreFiles": true
+```
+
+These are native VSCode features and work independently of this extension.
+
 ## Attribution
 
 Inspired by [explorer-exclude-vscode-extension](https://github.com/sfccdevops/explorer-exclude-vscode-extension) by sfccdevops (MIT). No code reused.
@@ -111,6 +125,20 @@ Inspired by [explorer-exclude-vscode-extension](https://github.com/sfccdevops/ex
 ## 已知限制
 
 **"Go to Symbol in Workspace"（Ctrl+T）符号搜索**的结果由语言服务器（如 TypeScript 的 tsserver）控制，语言服务器维护独立的文件索引，不受 `files.exclude` 影响。被排除的文件仍可能出现在符号搜索结果中。这是 VSCode 架构层面的限制，插件无法解决。
+
+## 提示：让 VSCode 遵守 .gitignore
+
+本插件管理的是显式的 glob 规则列表。如果你还希望 VSCode 自动遵守 `.gitignore` 文件，可以启用以下 VSCode 内置设置：
+
+```jsonc
+// 在 Explorer 中隐藏 .gitignore 里的文件
+"explorer.excludeGitIgnore": true,
+
+// 在全文搜索中排除 .gitignore 里的文件
+"search.useIgnoreFiles": true
+```
+
+这些是 VSCode 原生功能，与本插件独立工作。
 
 ## 致谢
 
