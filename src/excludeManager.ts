@@ -32,20 +32,30 @@ export async function addRule(pattern: string, enabled = true): Promise<void> {
 
 /** Remove a single pattern. */
 export async function removeRule(pattern: string): Promise<void> {
-  // First, remove the pattern from all target configs unconditionally
-  // (regardless of whether the target toggle is enabled), so no residue is left.
+  // Remove the pattern from each target config that is currently enabled.
+  // Disabled targets are not our responsibility to clean — they were never written to.
+  // If a target was enabled when the pattern was added but is now disabled,
+  // that case is handled by the onDidChangeConfiguration handler which calls resync()
+  // and clears all our patterns from disabled targets.
   const cfg = getConfig();
-  for (const targetKey of Object.values(TARGET_CONFIGS)) {
+  const toggles: Array<{ configKey: string; targetKey: string }> = [
+    { configKey: CONFIG_KEYS.syncToFilesExclude, targetKey: TARGET_CONFIGS.files },
+    { configKey: CONFIG_KEYS.syncToSearchExclude, targetKey: TARGET_CONFIGS.search },
+    { configKey: CONFIG_KEYS.syncToWatcherExclude, targetKey: TARGET_CONFIGS.watcher },
+  ];
+  for (const { configKey, targetKey } of toggles) {
+    const isEnabled = cfg.get<boolean>(configKey) ?? true;
+    if (!isEnabled) continue;
     const current = { ...(cfg.get<Record<string, unknown>>(targetKey) ?? {}) };
     if (pattern in current) {
       delete current[pattern];
       await cfg.update(targetKey, current, vscode.ConfigurationTarget.Workspace);
     }
   }
-  // Then remove from our list and re-sync the remaining patterns
+  // Remove from our list (no re-sync needed — targets already updated above)
   const list = getExcludeList();
   delete list[pattern];
-  await setExcludeList(list);
+  await getConfig().update(CONFIG_KEYS.excludeList, list, vscode.ConfigurationTarget.Workspace);
 }
 
 /** Toggle a single pattern's enabled state. */
