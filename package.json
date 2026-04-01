@@ -168,6 +168,7 @@
   },
   "scripts": {
     "build": "node esbuild.js",
+    "compile": "node esbuild.js",
     "watch": "node esbuild.js --watch",
     "vscode:prepublish": "node esbuild.js --production",
     "package": "vsce package",
