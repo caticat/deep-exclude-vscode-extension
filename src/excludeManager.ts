@@ -8,9 +8,10 @@ function getConfig() {
   return vscode.workspace.getConfiguration();
 }
 
-/** Read the current exclude list from workspace settings. */
+/** Read the current exclude list from workspace settings only (never merges user-level config). */
 export function getExcludeList(): ExcludeList {
-  return { ...(getConfig().get<ExcludeList>(CONFIG_KEYS.excludeList) ?? {}) };
+  const info = getConfig().inspect<ExcludeList>(CONFIG_KEYS.excludeList);
+  return { ...(info?.workspaceValue ?? {}) };
 }
 
 /** Write the exclude list and sync all targets. */
