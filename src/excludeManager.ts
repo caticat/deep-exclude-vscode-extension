@@ -32,6 +32,17 @@ export async function addRule(pattern: string, enabled = true): Promise<void> {
 
 /** Remove a single pattern. */
 export async function removeRule(pattern: string): Promise<void> {
+  // First, remove the pattern from all target configs unconditionally
+  // (regardless of whether the target toggle is enabled), so no residue is left.
+  const cfg = getConfig();
+  for (const targetKey of Object.values(TARGET_CONFIGS)) {
+    const current = { ...(cfg.get<Record<string, unknown>>(targetKey) ?? {}) };
+    if (pattern in current) {
+      delete current[pattern];
+      await cfg.update(targetKey, current, vscode.ConfigurationTarget.Workspace);
+    }
+  }
+  // Then remove from our list and re-sync the remaining patterns
   const list = getExcludeList();
   delete list[pattern];
   await setExcludeList(list);
