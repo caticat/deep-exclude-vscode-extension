@@ -27,6 +27,4 @@ export const DEFAULT_PRESET: Record<string, boolean> = {
   // Editor temp files
   '*.swp': true,
   '*.tmp': true,
-  // Log files
-  '*.log': true,
 };

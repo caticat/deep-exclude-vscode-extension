@@ -10,7 +10,7 @@ Unified file/folder exclusion management for VS Code. Maintain a single list of 
 - **Single exclusion list** — one place to manage all your exclusion rules
 - **Sync to multiple targets** — writes to `files.exclude`, `search.exclude`, and `files.watcherExclude` simultaneously
 - **Independent toggles** — enable/disable each sync target independently in settings
-- **Glob pattern support** — files, folders, or any glob expression (e.g. `*.log`, `dist/`)
+- **Glob pattern support** — files, folders, or any glob expression (e.g. `dist/`)
 - **Built-in preset** — common patterns pre-configured on first install
 - **Restore Defaults** — reset to the built-in preset at any time
 - **Sidebar panel** — view, toggle, and remove rules from the Explorer sidebar
@@ -46,7 +46,7 @@ Open the **Excluded Items** panel in the Explorer sidebar:
 
 ### Default preset
 
-Language-agnostic entries only: `.git/`, `.svn/`, `.hg/`, `CVS/`, `.DS_Store`, `Thumbs.db`, `desktop.ini`, `*.swp`, `*.tmp`, `*.log`
+Language-agnostic entries only: `.git/`, `.svn/`, `.hg/`, `CVS/`, `.DS_Store`, `Thumbs.db`, `desktop.ini`, `*.swp`, `*.tmp`
 
 ## Known Limitations
 
@@ -106,7 +106,7 @@ Inspired by [explorer-exclude-vscode-extension](https://github.com/sfccdevops/ex
 
 ### 内置预设
 
-仅包含与语言无关的通用规则：`.git/`、`.svn/`、`.hg/`、`CVS/`、`.DS_Store`、`Thumbs.db`、`desktop.ini`、`*.swp`、`*.tmp`、`*.log`
+仅包含与语言无关的通用规则：`.git/`、`.svn/`、`.hg/`、`CVS/`、`.DS_Store`、`Thumbs.db`、`desktop.ini`、`*.swp`、`*.tmp`
 
 ## 已知限制
 
