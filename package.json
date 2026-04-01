@@ -149,6 +149,18 @@
           "default": true,
           "description": "Sync exclusion list to files.watcherExclude (file system watcher, performance optimization).",
           "scope": "resource"
+        },
+        "deepExclude.respectGitignoreInExplorer": {
+          "type": "boolean",
+          "default": false,
+          "description": "Hide .gitignore'd files from the Explorer (sets explorer.excludeGitIgnore at workspace level).",
+          "scope": "resource"
+        },
+        "deepExclude.respectGitignoreInSearch": {
+          "type": "boolean",
+          "default": false,
+          "description": "Exclude .gitignore'd files from full-text search (sets search.useIgnoreFiles at workspace level).",
+          "scope": "resource"
         }
       }
     }

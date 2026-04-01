@@ -135,8 +135,22 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       if (watched.some((k) => e.affectsConfiguration(k))) {
         excludeManager.resync().then(() => viewPane.refresh());
       }
+
+      if (e.affectsConfiguration(CONFIG_KEYS.respectGitignoreInExplorer) ||
+          e.affectsConfiguration(CONFIG_KEYS.respectGitignoreInSearch)) {
+        applyGitignoreSettings();
+      }
     })
   );
+
+  // Apply gitignore settings on activation
+  applyGitignoreSettings();
 }
 
-export function deactivate(): void {}
+function applyGitignoreSettings(): void {
+  const cfg = vscode.workspace.getConfiguration();
+  const inExplorer = cfg.get<boolean>(CONFIG_KEYS.respectGitignoreInExplorer) ?? false;
+  const inSearch = cfg.get<boolean>(CONFIG_KEYS.respectGitignoreInSearch) ?? false;
+  cfg.update('explorer.excludeGitIgnore', inExplorer, vscode.ConfigurationTarget.Workspace);
+  cfg.update('search.useIgnoreFiles', inSearch, vscode.ConfigurationTarget.Workspace);
+}

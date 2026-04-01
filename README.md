@@ -43,6 +43,8 @@ Open the **Excluded Items** panel in the Explorer sidebar:
 | `deepExclude.syncToFilesExclude` | `true` | Sync to `files.exclude` (Explorer, Quick Open, Symbol Search) |
 | `deepExclude.syncToSearchExclude` | `true` | Sync to `search.exclude` (full-text search) |
 | `deepExclude.syncToWatcherExclude` | `true` | Sync to `files.watcherExclude` (performance) |
+| `deepExclude.respectGitignoreInExplorer` | `false` | Hide `.gitignore`'d files from Explorer (sets `explorer.excludeGitIgnore`) |
+| `deepExclude.respectGitignoreInSearch` | `false` | Exclude `.gitignore`'d files from full-text search (sets `search.useIgnoreFiles`) |
 
 ### Default preset
 
@@ -54,17 +56,7 @@ Language-agnostic entries only: `.git/`, `.svn/`, `.hg/`, `CVS/`, `.DS_Store`, `
 
 ## Tips: Respecting .gitignore
 
-This extension manages explicit glob patterns. If you also want VSCode to respect your `.gitignore` file, enable these built-in VSCode settings:
-
-```jsonc
-// Hide .gitignore'd files from Explorer
-"explorer.excludeGitIgnore": true,
-
-// Exclude .gitignore'd files from full-text search
-"search.useIgnoreFiles": true
-```
-
-These are native VSCode features and work independently of this extension.
+Enable `deepExclude.respectGitignoreInExplorer` and/or `deepExclude.respectGitignoreInSearch` in the extension settings to have VSCode respect your `.gitignore` file. Both settings are written to workspace scope only.
 
 ## Attribution
 
@@ -117,6 +109,8 @@ Inspired by [explorer-exclude-vscode-extension](https://github.com/sfccdevops/ex
 | `deepExclude.syncToFilesExclude` | `true` | 同步到 `files.exclude`（影响 Explorer、快速打开、符号搜索） |
 | `deepExclude.syncToSearchExclude` | `true` | 同步到 `search.exclude`（影响全文搜索） |
 | `deepExclude.syncToWatcherExclude` | `true` | 同步到 `files.watcherExclude`（文件监听器性能优化） |
+| `deepExclude.respectGitignoreInExplorer` | `false` | 在 Explorer 中隐藏 `.gitignore` 里的文件（设置 `explorer.excludeGitIgnore`） |
+| `deepExclude.respectGitignoreInSearch` | `false` | 在全文搜索中排除 `.gitignore` 里的文件（设置 `search.useIgnoreFiles`） |
 
 ### 内置预设
 
@@ -128,17 +122,7 @@ Inspired by [explorer-exclude-vscode-extension](https://github.com/sfccdevops/ex
 
 ## 提示：让 VSCode 遵守 .gitignore
 
-本插件管理的是显式的 glob 规则列表。如果你还希望 VSCode 自动遵守 `.gitignore` 文件，可以启用以下 VSCode 内置设置：
-
-```jsonc
-// 在 Explorer 中隐藏 .gitignore 里的文件
-"explorer.excludeGitIgnore": true,
-
-// 在全文搜索中排除 .gitignore 里的文件
-"search.useIgnoreFiles": true
-```
-
-这些是 VSCode 原生功能，与本插件独立工作。
+在插件设置中启用 `deepExclude.respectGitignoreInExplorer` 和/或 `deepExclude.respectGitignoreInSearch`，即可让 VSCode 遵守 `.gitignore` 文件。两个开关均写入 workspace 层级。
 
 ## 致谢
 

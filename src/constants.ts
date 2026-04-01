@@ -5,6 +5,8 @@ export const CONFIG_KEYS = {
   syncToFilesExclude: `${EXT_ID}.syncToFilesExclude`,
   syncToSearchExclude: `${EXT_ID}.syncToSearchExclude`,
   syncToWatcherExclude: `${EXT_ID}.syncToWatcherExclude`,
+  respectGitignoreInExplorer: `${EXT_ID}.respectGitignoreInExplorer`,
+  respectGitignoreInSearch: `${EXT_ID}.respectGitignoreInSearch`,
 } as const;
 
 export const TARGET_CONFIGS = {
